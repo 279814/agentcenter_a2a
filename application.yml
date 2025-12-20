@@ -126,3 +126,8 @@ app:
       description: '天机AI问题回答智能体'
       host: 127.0.0.1
       version: '1.0.0'
+
+mcp-servers:
+  - name: agent_center_mcp
+    transport: streamable_http
+    url: http://localhost:18099/mcp
