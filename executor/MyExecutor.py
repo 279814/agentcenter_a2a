@@ -65,12 +65,13 @@ class MyExecutor(AgentExecutor):
                 await event_queue.enqueue_event(message)
             else:
                 _content = event.get("content")
-                if event.get("name") == "query_course_by_id":
-                    course_info = JsonUtil.to_obj(_content, CourseInfo)
-                    tool_result[f"courseInfo_{course_info.id}"] = course_info
-                elif event.get("name") == "pre_place_order":
-                    order = JsonUtil.to_obj(_content, PrePlaceOrder)
-                    tool_result["prePlaceOrder"] = order
+                if _content:
+                    if event.get("name") == "query_course_by_id":
+                        course_info = JsonUtil.to_obj(_content, CourseInfo)
+                        tool_result[f"courseInfo_{course_info.id}"] = course_info
+                    elif event.get("name") == "pre_place_order":
+                        order = JsonUtil.to_obj(_content, PrePlaceOrder)
+                        tool_result["prePlaceOrder"] = order
 
             # 如果 agent 返回 done=True，则结束流式输出
             if event["done"]:
