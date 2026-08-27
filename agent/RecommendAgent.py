@@ -22,6 +22,6 @@ class RecommendAgent(BaseAgent):
         # return [query_course_by_id]
         course_tool = asyncio.run(mcp_service.get_tool("query_course_by_id"))
         recommend_tool = asyncio.run(mcp_service.get_tool("query_recommend_data"))
-        return [course_tool, recommend_tool]
+        return [course_tool]
 
 recommend_agent = RecommendAgent()

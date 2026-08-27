@@ -74,7 +74,7 @@ class MyExecutor(AgentExecutor):
                 if _content:
                     if event.get("name") == "query_course_by_id":
                         course_info = JsonUtil.to_obj(_content, CourseInfo)
-                        tool_result[f"courseInfo_{course_info.id}"] = course_info
+                        tool_result[f"courseInfo_{course_info["id"]}"] = course_info
                     elif event.get("name") == "pre_place_order":
                         order = JsonUtil.to_obj(_content, PrePlaceOrder)
                         tool_result["prePlaceOrder"] = order
