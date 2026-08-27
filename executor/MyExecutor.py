@@ -3,6 +3,12 @@ from a2a.server.events import EventQueue
 from a2a.types import TaskArtifactUpdateEvent, TaskStatusUpdateEvent, TaskState, TaskStatus
 from a2a.utils import new_text_artifact
 
+import os, sys
+current_file_path = os.path.abspath(__file__)
+model_file_path = os.path.dirname(current_file_path)
+root_path = os.path.dirname(model_file_path)
+sys.path.insert(0, root_path)
+
 from agent.BaseAgent import BaseAgent
 from agent.result import CourseInfo, PrePlaceOrder
 from util import JsonUtil
