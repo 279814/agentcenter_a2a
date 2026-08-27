@@ -8,6 +8,12 @@ from langchain.agents import create_agent
 from langchain.chat_models import init_chat_model
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage, ToolMessage
 
+import os, sys
+current_file_path = os.path.abspath(__file__)
+model_file_path = os.path.dirname(current_file_path)
+root_path = os.path.dirname(model_file_path)
+sys.path.insert(0, root_path)
+
 from config import config_manager, logger
 from agent.result.ToolContext import ToolContext
 

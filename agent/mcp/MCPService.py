@@ -1,5 +1,15 @@
 import asyncio
 
+import os, sys
+current_file_path = os.path.abspath(__file__)
+model_file_path = os.path.dirname(current_file_path)
+agent_path = os.path.dirname(model_file_path)
+root_path = os.path.dirname(agent_path)
+sys.path.insert(0, root_path)
+# 移除 agent 目录，防止本项目的 agent/mcp 包遮蔽第三方 mcp 库
+while agent_path in sys.path:
+    sys.path.remove(agent_path)
+
 from langchain_mcp_adapters.client import MultiServerMCPClient
 from langchain_mcp_adapters.interceptors import MCPToolCallRequest
 from langchain_mcp_adapters.tools import ToolCallInterceptor

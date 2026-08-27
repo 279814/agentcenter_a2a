@@ -1,1 +1,4 @@
-from .MCPService import mcp_service
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from MCPService import mcp_service
